@@ -228,6 +228,7 @@ function invalidPlay(state, seedId, moves, dispatch) {
         title: 'Too many Moves',
         message: 'Remove some values to move seed.'
       }));
+      return true;
     }
   };
 
@@ -243,8 +244,8 @@ function invalidPlay(state, seedId, moves, dispatch) {
 export function setSeedPosition(data) {
   const { seed: seedId, position: moves, dispatch, cb } = data;
   const state = store.getState().gameData;
-
-  if (invalidPlay(state, seedId, moves, dispatch)) {
+  const check = invalidPlay(state, seedId, moves, dispatch);
+  if (check) {
     return;
   }
   if (getSeedPosition(state, seedId) === still && (moves.includes(6) || moves[0] === moves[1])) {

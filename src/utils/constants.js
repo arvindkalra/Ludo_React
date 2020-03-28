@@ -34,8 +34,8 @@ export const initialState = {
     'H3-Colour': 'yellow'
   },
   houseFourCards: {
-    'H4-C1': { position: still, movesLeft: movesLeft },
-    'H4-C2': { position: still, movesLeft: movesLeft },
+    'H4-C1': { position: "HR-13", movesLeft: 4 },
+    'H4-C2': { position: "HR-24", movesLeft: movesLeft },
     'H4-C3': { position: still, movesLeft: movesLeft },
     'H4-C4': { position: still, movesLeft: movesLeft },
     'H4-Colour': 'green'
