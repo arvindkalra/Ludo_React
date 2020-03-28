@@ -1,8 +1,8 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
+import socketIOClient from "socket.io-client";
 import GameFrame from './containers/GamePlay';
 import HomePage from './containers/HomePage';
 import Header from './components/Header';
@@ -16,6 +16,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'toastr/build/toastr.css';
 import './mystyles.css';
+import {createAction} from "redux-actions";
 
 const NotFound = () => (
   <div className="center-all">
@@ -38,6 +39,16 @@ const Home = () => <div>
 </div>;
 
 const Game = () => {
+  useEffect(()=>{
+    const socket = socketIOClient("http://be6a5494.ngrok.io");
+    window.socket = socket
+    socket.on("action_received_gameData",(action)=>{
+      // action.fromSocket = true
+      console.log("received",action)
+      store.dispatch({type:"fromSocket",payload:action})
+    })
+
+  },[])
   return (<Provider store={store}>
     <Router>
       <Switch>
@@ -48,6 +59,7 @@ const Game = () => {
   </Provider>
   );
 };
+
 
 render(<Game />, document.getElementById('root'));
 registerServiceWorker();

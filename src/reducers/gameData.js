@@ -5,6 +5,7 @@ import { initialState } from '../utils/constants';
 
 // movesLeft here is the minimum number of moves needed to finish after coming out of the house.
 
+
 function nextTurn(state) {
   const { playerTurn, playingHouses } = state;
   const playingIndex = playingHouses.indexOf(playerTurn.replace('P', 'H'));
@@ -37,9 +38,7 @@ function setInitialPlayerTurn(state) {
   const playingHouses = Object.keys(availHouses);
 
   return {
-    playerToStart: playingHouses
-      .find(key => houseColors[key] === availPlayers)
-      .replace('H', 'P'),
+    playerToStart: "P4",
     playingHouses: setHouseOrder(playingHouses),
   };
 }
@@ -58,12 +57,15 @@ function makeStateCopy() {
   return cloneDeep(initialState);
 }
 
-export default function gameData(state = makeStateCopy(), action) {
+function getNewState(state,action){
+
   switch (action.type) {
+    case "fromSocket":
+      return {...action.payload}
     case Types.SET_COLOURS:
       return setColours(state, action);
     case Types.MOVE_SEED_TO_POSITION:
-      return Object.assign({}, state, action.seedGroup);
+      return {...state}
     case Types.DISABLE_INACTIVE_HOUSE_SEEDS:
       const items = { ...state };
       Object.keys(items).forEach(item => {
@@ -158,4 +160,21 @@ export default function gameData(state = makeStateCopy(), action) {
     default:
       return state;
   }
+}
+
+export default function gameData(state = initialState, action) {
+  console.log(action,state)
+  const newState = getNewState(state,action)
+  if(window.socket && action.type !=="fromSocket"){
+    console.log("socket found")
+    window.socket.emit("action_gameData",{...newState})
+
+  }
+
+  return newState
+
+  // if(action.fromSocket){
+  //   return  {...action}
+  // }
+
 }

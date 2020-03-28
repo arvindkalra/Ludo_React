@@ -2,6 +2,7 @@ import React from 'react';
 import { buildRails } from '../../utils/buildRails';
 
 export const VRailFrame = ({ VRailHeight, boxPosition, boxColour, seedData, disabled, reduxProps }) => {
+
   const colour = disabled ? 'grey' : boxColour;
   return (
     <div className="rails" style={{ width: VRailHeight * 0.5, height: VRailHeight }} >

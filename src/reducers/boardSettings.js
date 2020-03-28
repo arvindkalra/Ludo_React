@@ -13,6 +13,7 @@ function updateSettings(state, data) {
 }
 
 export default function gameData(state = initialState, action) {
+  
   switch (action.type) {
     case Types.UPDATE_BOARD_SETTINGS:
       return updateSettings(state, action.payload);
