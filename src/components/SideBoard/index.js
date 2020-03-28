@@ -16,7 +16,6 @@ import {
   gameDataReset,
 } from '../../actions';
 import { findSeedGroup } from '../../utils/moveSeed';
-import GameChat from '../GameChat';
 import { disableEmptyHouses } from '../../helpers';
 import './index.css';
 
@@ -68,7 +67,7 @@ class SideBoard extends Component {
     const seedOutside = seedGroup.filter(group => group.movesLeft < 56).length;
 
     Object.keys(seedGroup).forEach(group => {
-      if (seedGroup[group].position === 'still' && !resultCollection.includes(6)) {
+      if (seedGroup[group].position === 'still' && !resultCollection.includes(6) && resultCollection[0] !== resultCollection[1]) {
         canPlay += 1;
       } else if (seedOutside < 2 && resultsSum > seedGroup[group].movesLeft) {
         canPlay += 1;
@@ -191,15 +190,6 @@ class SideBoard extends Component {
     )
   }
 
-  resetGame = () => {
-    if(window.confirm('Are you sure you want to restart the game?')) {
-      this.props.gameDataReset();
-      const { numberOfPlayers } = this.props;
-      disableEmptyHouses(this.props.setDisabled, numberOfPlayers);
-    }
-  }
-
-
   newGame = () => {
     if(window.confirm('Are you sure you want to create new game?')) {
       return window.location.href = '/';
@@ -229,12 +219,8 @@ class SideBoard extends Component {
     colour = colour.substr(0, 1).toUpperCase() + colour.substr(1, colour.length);
     return (
       <div style={containerStyle}>
-        <hr className="hRule" />
-        <GameChat />
-        <hr className="hRule" />
         <div className="reset-buttons">
-          <button type="button" className="btn btn-warning" onClick={this.newGame}>New Gane</button>
-          <button type="button" className="btn btn-warning" onClick={this.resetGame}>Restart Gane</button>
+          <button type="button" className="btn btn-warning" onClick={this.newGame}>New Game</button>
         </div>
         <hr className="hRule" />
         <div className="playMoveContainer">

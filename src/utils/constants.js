@@ -9,6 +9,8 @@ export const NUMBER = {
   4: 'Four'
 }
 
+export const safePositions = ["HL-01", "HL-22", "VT-20", "VT-12", "HR-03", "HR-24", "VB-32", "VB-40"];
+
 export const initialState = {
   houseOneCards: {
     'H1-C1': { position: still, movesLeft: movesLeft },

@@ -7,7 +7,7 @@ import { moveSeed,
 import store from '../store';
 
 import { startPoint, newSeedPosition } from './seedPath.js';
-import { still, movesLeft, home, NUMBER } from './constants';
+import {still, movesLeft, home, NUMBER, safePositions} from './constants';
 
 /**
  * setColours
@@ -114,6 +114,10 @@ function checkForWins(seedGroup, dispatch) {
  * move ends at its position.
  */
 function killSeed(state, dispatch, seedPosition, movingSeed) {
+  const isSafe = safePositions.indexOf(seedPosition);
+  if(isSafe !== -1){
+    return;
+  }
   const seeds = getLudoSeeds(state);
   const seedsInSamePosition = Object.keys(seeds).filter((seed) => {
     return (seed !== movingSeed) && (seeds[seed].position === seedPosition);
@@ -133,12 +137,6 @@ function killSeed(state, dispatch, seedPosition, movingSeed) {
       title: `${movingSeed} kills ${seedId}`,
       message: `${movingSeed} is going home`,
     }));
-
-    seedGroup = findSeedGroup(state, movingSeed);
-    checkForWins(seedGroup, dispatch);
-    seedGroup[movingSeed].position = home;
-    seedGroup[movingSeed].movesLeft = 0;
-    dispatch(moveSeed(seedGroup));
   }
 }
 
@@ -150,7 +148,6 @@ function killSeed(state, dispatch, seedPosition, movingSeed) {
 function makeSeedMove(options) {
   const { lastMove, state, dispatch, seedPosition, seedId, reduceMoves } = options;
   const seedGroup = findSeedGroup(state, seedId);
-
   seedGroup[seedId].position = seedPosition;
 
   if (reduceMoves) {
@@ -202,7 +199,7 @@ function invalidPlay(state, seedId, moves, dispatch) {
   const movesLeft = seedRemainingMoves(state, seedId);
   const movesSum = moves.reduce((a, b) => Number(a) + Number(b), 0);
 
-  if (position === still && !moves.includes(6)) {
+  if (position === still && !moves.includes(6) && moves[0] !== moves[1]) {
 
     dispatch(sendNotification({
       type: 'Error',
@@ -250,16 +247,28 @@ export function setSeedPosition(data) {
   if (invalidPlay(state, seedId, moves, dispatch)) {
     return;
   }
-  if (getSeedPosition(state, seedId) === still && moves.includes(6)) {
-    moves.splice(moves.indexOf(6), 1);
-    setTimeout(() => {
-      const lastMove = (moves.length === 1) ? true : false;
-      const seedPosition = startPoint(seedId);
-      const options = {
-        lastMove, state, dispatch, seedPosition, seedId
-      }
-      makeSeedMove(options);
-    }, 100);
+  if (getSeedPosition(state, seedId) === still && (moves.includes(6) || moves[0] === moves[1])) {
+    if(moves.includes(6)){
+      moves.splice(moves.indexOf(6), 1);
+      setTimeout(() => {
+        const lastMove = (moves.length === 1) ? true : false;
+        const seedPosition = startPoint(seedId);
+        const options = {
+          lastMove, state, dispatch, seedPosition, seedId
+        };
+        makeSeedMove(options);
+      }, 100);
+    }else{
+      moves.splice(0, 2);
+      setTimeout(() => {
+        const lastMove = true;
+        const seedPosition = startPoint(seedId);
+        const options = {
+          lastMove, state, dispatch, seedPosition, seedId
+        };
+        makeSeedMove(options);
+      }, 100);
+    }
   }
   if (moves.length > 0) {
     const move = moves.reduce((a, b) => Number(a) + Number(b), 0); // sum up the content of the array.

@@ -12,12 +12,13 @@ class Houses extends Component {
   componentDidMount() {
     // const playerTurn = this.props.gameData.playerTurn;
     // this.props.disableInactiveHouseSeed(playerTurn);
-    const { numberOfPlayers } = this.props;
+    const { numberOfPlayers} = this.props;
     disableEmptyHouses(this.props.setDisabled, numberOfPlayers);
   }
 
   render() {
     const { setDisabledHousesComplete, gameBoardHeight, disabledHouses } = this.props;
+    const props = this.props;
     const houseHeight = gameBoardHeight * 0.4;
     const VRailHeight = gameBoardHeight * 0.4;
     const HRailHeight = gameBoardHeight * 0.2;
@@ -38,6 +39,7 @@ class Houses extends Component {
             boxPosition={'VT'}
             seedData={seedData}
             disabled={disabledHouses['red']}
+            reduxProps={props}
           />
           <HouseFrame houseHeight={houseHeight} houseNumber={2} disabled={disabledHouses['red']} />
         </div>
@@ -49,6 +51,7 @@ class Houses extends Component {
             boxPosition={'HL'}
             seedData={seedData}
             disabled={disabledHouses['blue']}
+            reduxProps={props}
           />
           <div className="home" style={{ width: HRailHeight, height: HRailHeight }}>
           </div>
@@ -59,6 +62,7 @@ class Houses extends Component {
             boxPosition={'HR'}
             seedData={seedData}
             disabled={disabledHouses['green']}
+            reduxProps={props}
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -69,6 +73,7 @@ class Houses extends Component {
             boxPosition={'VB'}
             seedData={seedData}
             disabled={disabledHouses['yellow']}
+            reduxProps={props}
           />
           <HouseFrame houseHeight={houseHeight} position={"right"} houseNumber={4} disabled={disabledHouses['green']} />
         </div>

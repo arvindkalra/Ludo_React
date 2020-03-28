@@ -12,16 +12,16 @@ export function buildRails(col, row, size, position, colour, seedData) {
 
   switch (position) {
     case 'VT':
-      colourBoxes = [5, 6, 8, 11, 14, 17];
+      colourBoxes = [5, 6, 7, 8, 11, 14, 17];
       break;
     case 'VB':
-      colourBoxes = [2, 5, 8, 11, 13, 14];
+      colourBoxes = [2, 5, 8, 11, 12, 13, 14];
       break;
     case 'HR':
-      colourBoxes = [7, 8, 9, 10, 11, 17];
+      colourBoxes = [4, 7, 8, 9, 10, 11, 17];
       break;
     case 'HL':
-      colourBoxes = [2, 8, 9, 10, 11, 12];
+      colourBoxes = [2, 8, 9, 10, 11, 12, 15];
       break;
     default:
       return;
