@@ -38,7 +38,7 @@ function setInitialPlayerTurn(state) {
   const playingHouses = Object.keys(availHouses);
 
   return {
-    playerToStart: "P4",
+    playerToStart: "P1",
     playingHouses: setHouseOrder(playingHouses),
   };
 }
@@ -163,7 +163,7 @@ function getNewState(state,action){
 }
 
 export default function gameData(state = initialState, action) {
-  console.log(action,state)
+
   const newState = getNewState(state,action)
   if(window.socket && action.type !=="fromSocket"){
     console.log("socket found")

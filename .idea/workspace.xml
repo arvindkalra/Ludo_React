@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2b316779-602c-484e-a859-c2ed2dc3fcfe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Rails/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideBoard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideBoard/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/boardSettings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/boardSettings.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/gameData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/gameData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +45,7 @@
       <updated>1585395321673</updated>
       <workItem from="1585395324389" duration="7951000" />
       <workItem from="1585415480055" duration="5486000" />
-      <workItem from="1585424180962" duration="4146000" />
+      <workItem from="1585424180962" duration="5507000" />
     </task>
     <servers />
   </component>
@@ -59,16 +57,16 @@
       <screen x="1024" y="0" width="1366" height="768" />
     </state>
     <state x="1170" y="41" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1024.744/1024.0.1366.768@1024.0.1366.768" timestamp="1585417668034" />
-    <state x="338" y="97" width="764" height="671" key="find.popup" timestamp="1585427728222">
+    <state x="338" y="97" width="764" height="671" key="find.popup" timestamp="1585430086980">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="338" y="97" width="764" height="671" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1585427728222" />
+    <state x="338" y="97" width="764" height="671" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1585430086980" />
     <state x="1345" y="83" width="724" height="572" key="find.popup/0.24.1024.744/1024.0.1366.768@1024.0.1366.768" timestamp="1585420636843" />
     <state x="321" y="104" width="724" height="554" key="find.popup/0.24.1366.744@0.24.1366.744" timestamp="1585407134731" />
-    <state x="365" y="79" width="709" height="821" key="search.everywhere.popup" timestamp="1585427735763">
+    <state x="365" y="79" width="709" height="821" key="search.everywhere.popup" timestamp="1585430027739">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="365" y="79" width="709" height="821" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1585427735763" />
+    <state x="365" y="79" width="709" height="821" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1585430027739" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.24.1366.744@0.24.1366.744" timestamp="1585405876947" />
   </component>
 </project>

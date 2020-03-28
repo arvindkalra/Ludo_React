@@ -109,6 +109,7 @@ class SideBoard extends Component {
       numberOfDice: 2,
       callback: this.setDieRollResult,
     };
+
     rollADie(options);
   }
 
@@ -155,7 +156,7 @@ class SideBoard extends Component {
     return (
       <div className="playMove">
         <input
-          disabled={!playDisabled}
+          disabled={!playDisabled || (this.props.myPlayer !== this.props.playerTurn)}
           onClick={this.moveSeed}
           className={`btn playButton ${colour.toLowerCase()}-playing-body`}
           value="Play It"
@@ -201,7 +202,9 @@ class SideBoard extends Component {
       sideBoardWidth,
       playerTurn,
       dieCast,
+        myPlayer
     } = this.props;
+
     const containerStyle = {
       float: 'right',
       width: sideBoardWidth * 0.8,
@@ -238,8 +241,10 @@ class SideBoard extends Component {
             <div id="roll-die"></div>
           </div>
           <div
-            className={`${colour.toLowerCase()}-playing-body rollDieButton ${disableButton ? 'disabled' : ''}`}
-            onClick={this.rollDice}>
+            className={`${colour.toLowerCase()}-playing-body rollDieButton ${disableButton || (this.props.myPlayer !== this.props.playerTurn) ? 'disabled' : ''}`}
+            onClick={
+              this.props.myPlayer === this.props.playerTurn &&  this.rollDice
+            }>
             Roll Dice
           </div>
         </div>
@@ -251,6 +256,7 @@ class SideBoard extends Component {
 
 function mapStateToProps({ gameSettings, gameData }) {
   return {
+    myPlayer: gameSettings.color,
     sideBoardWidth: gameSettings.sideBoardWidth,
     playerTurn: gameData.playerTurn,
     selectedSeed: gameData.selectedSeed,

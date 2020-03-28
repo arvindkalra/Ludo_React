@@ -12,6 +12,7 @@ export const NUMBER = {
 export const safePositions = ["HL-01", "HL-22", "VT-20", "VT-12", "HR-03", "HR-24", "VB-32", "VB-40"];
 
 export const initialState = {
+  myColor: "",
   houseOneCards: {
     'H1-C1': { position: still, movesLeft: movesLeft },
     'H1-C2': { position: still, movesLeft: movesLeft },
