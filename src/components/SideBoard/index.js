@@ -156,7 +156,7 @@ class SideBoard extends Component {
     return (
       <div className="playMove">
         <input
-          disabled={!playDisabled || (this.props.myPlayer !== this.props.playerTurn)}
+          disabled={!playDisabled || (!this.props.myPlayer.includes(this.props.playerTurn) )}
           onClick={this.moveSeed}
           className={`btn playButton ${colour.toLowerCase()}-playing-body`}
           value="Play It"
@@ -241,9 +241,9 @@ class SideBoard extends Component {
             <div id="roll-die"></div>
           </div>
           <div
-            className={`${colour.toLowerCase()}-playing-body rollDieButton ${disableButton || (this.props.myPlayer !== this.props.playerTurn) ? 'disabled' : ''}`}
+            className={`${colour.toLowerCase()}-playing-body rollDieButton ${disableButton || (!this.props.myPlayer.includes(this.props.playerTurn) ) ? 'disabled' : ''}`}
             onClick={
-              this.props.myPlayer === this.props.playerTurn &&  this.rollDice
+              this.props.myPlayer.includes(this.props.playerTurn) &&  this.rollDice
             }>
             Roll Dice
           </div>
