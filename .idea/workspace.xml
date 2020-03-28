@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2b316779-602c-484e-a859-c2ed2dc3fcfe" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Rails/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Rails/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/buildRails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/buildRails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/moveSeed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/moveSeed.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +33,7 @@
       <option name="presentableId" value="Default" />
       <updated>1585395321673</updated>
       <workItem from="1585395324389" duration="7951000" />
-      <workItem from="1585415480055" duration="5243000" />
+      <workItem from="1585415480055" duration="5486000" />
     </task>
     <servers />
   </component>
