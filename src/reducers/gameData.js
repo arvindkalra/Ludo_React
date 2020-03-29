@@ -165,7 +165,7 @@ function getNewState(state,action){
 export default function gameData(state = initialState, action) {
 
   const newState = getNewState(state,action)
-  if(window.socket && action.type !=="fromSocket"){
+  if(window.socket && action.type !=="fromSocket" && action.type !== Types.CREATE_NOTIFICATION){
     console.log("socket found")
     window.socket.emit("action_gameData",{...newState})
 

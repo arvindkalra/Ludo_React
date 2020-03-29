@@ -40,12 +40,14 @@ const Home = () => <div>
 
 const Game = () => {
   useEffect(()=>{
-    const socket = socketIOClient("http://be6a5494.ngrok.io");
-    window.socket = socket
-    socket.on('connected',(color)=>{
-      console.log(color)
-      store.dispatch({type:"UPDATE_BOARD_SETTINGS",payload:{color}})
-    })
+    const socket = socketIOClient("http://e4813a6f.ngrok.io");
+    window.socket = socket;
+
+    socket.emit("get_color");
+    socket.on("color", (color) => {
+      store.dispatch({type:"UPDATE_BOARD_SETTINGS",payload:{color}});
+    });
+
     socket.on("action_received_gameData",(action)=>{
       // action.fromSocket = true
 

@@ -153,10 +153,11 @@ class SideBoard extends Component {
     const { selectedSeed } = this.props;
     const { results } = this.state;
     const playDisabled = selectedSeed && results.filter(result => result.selected).length;
+    const myMove = this.props && this.props.myPlayer && this.props.myPlayer.includes(this.props.playerTurn);
     return (
       <div className="playMove">
         <input
-          disabled={!playDisabled || (!this.props.myPlayer.includes(this.props.playerTurn) )}
+          disabled={!playDisabled || !myMove}
           onClick={this.moveSeed}
           className={`btn playButton ${colour.toLowerCase()}-playing-body`}
           value="Play It"
@@ -217,6 +218,7 @@ class SideBoard extends Component {
       justifyContent: 'space-between',
     };
     const disableButton = (dieCast) ? 'disabled' : null;
+    const myMove = this.props && this.props.myPlayer && this.props.myPlayer.includes(this.props.playerTurn);
     const houseNumber = playerTurn.substr(1, 1);
     let colour = this.props.gameData[`house${NUMBER[houseNumber]}Cards`][`H${houseNumber}-Colour`];
     colour = colour.substr(0, 1).toUpperCase() + colour.substr(1, colour.length);
@@ -241,9 +243,9 @@ class SideBoard extends Component {
             <div id="roll-die"></div>
           </div>
           <div
-            className={`${colour.toLowerCase()}-playing-body rollDieButton ${disableButton || (!this.props.myPlayer.includes(this.props.playerTurn) ) ? 'disabled' : ''}`}
+            className={`${colour.toLowerCase()}-playing-body rollDieButton ${disableButton || !myMove ? 'disabled' : ''}`}
             onClick={
-              this.props.myPlayer.includes(this.props.playerTurn) &&  this.rollDice
+              myMove &&  this.rollDice
             }>
             Roll Dice
           </div>
